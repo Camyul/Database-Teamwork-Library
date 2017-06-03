@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Library.Models
+namespace Library.Models.BooksManagement
 {
     public class Genre
     {

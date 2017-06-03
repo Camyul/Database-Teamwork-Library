@@ -1,9 +1,10 @@
 ﻿namespace LibraryApp
 {
     using Library.Models;
+    using Library.Models.BooksManagement;
     using System.Data.Entity;
 
-    class LibraryDbContext:DbContext
+    public class LibraryDbContext:DbContext
     {
         public LibraryDbContext():base("LibraryConnection")
         {
