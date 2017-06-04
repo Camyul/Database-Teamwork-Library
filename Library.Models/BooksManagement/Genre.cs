@@ -7,7 +7,8 @@ namespace Library.Models.BooksManagement
     {
         public int Id { get; set; }
 
-        [MaxLength(50)]
+        [Required]
+        [StringLength(50)]
         public string Name { get; set; }
 
         public virtual ICollection<Book> Books { get; set; }

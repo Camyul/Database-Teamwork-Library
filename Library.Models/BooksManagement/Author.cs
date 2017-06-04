@@ -12,9 +12,13 @@ namespace Library.Models.BooksManagement
     {
         [Required]
         public int Id { get; set; }
+        
         [Required]
+        [StringLength(40)]
         public string FirstName { get; set; }
-        [Required]
+        
+       [Required]
+       [StringLength(40)]
         public string LastName { get; set; }
         public virtual ICollection<Book> Books { get; set; }
     }

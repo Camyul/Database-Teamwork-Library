@@ -13,14 +13,16 @@ namespace Library.Models.BooksManagement
     {
         public int Id { get; set; }
 
-        [MaxLength(100)]
         [Required]
+        [StringLength(100)]
         public string Title { get; set; }
+
         [Column(TypeName = "text")]
         public string Description { get; set; }
 
+        [Required]
         public virtual Author Author { get; set; }
-
+        
         public virtual ICollection<Genre> Genres { get; set; }
 
         public virtual BooksOrder Order { get; set; }
