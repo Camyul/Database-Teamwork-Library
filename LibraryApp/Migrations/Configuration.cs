@@ -1,15 +1,15 @@
-namespace Library.Models.Migrations
+namespace LibraryApp.Migrations
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    public sealed class Configuration : DbMigrationsConfiguration<LibraryApp.LibraryDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<LibraryApp.LibraryDbContext>
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(LibraryApp.LibraryDbContext context)

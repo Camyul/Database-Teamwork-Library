@@ -54,9 +54,6 @@
     <Compile Include="BooksManagement\Author.cs" />
     <Compile Include="BooksManagement\Book.cs" />
     <Compile Include="BooksManagement\Genre.cs" />
-    <Compile Include="BooksManagement\Order.cs" />
-    <Compile Include="LibraryDbContext.cs" />
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Adrresses\Adrress.cs" />
     <Compile Include="Adrresses\Town.cs" />

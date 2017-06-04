@@ -52,6 +52,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LibraryDbContext.cs" />
+    <Compile Include="Migrations\201706040259251_Initial.cs" />
+    <Compile Include="Migrations\201706040259251_Initial.Designer.cs">
+      <DependentUpon>201706040259251_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706040305229_Correct Author lastname.cs" />
+    <Compile Include="Migrations\201706040305229_Correct Author lastname.Designer.cs">
+      <DependentUpon>201706040305229_Correct Author lastname.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706040410358_Add constraints.cs" />
+    <Compile Include="Migrations\201706040410358_Add constraints.Designer.cs">
+      <DependentUpon>201706040410358_Add constraints.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="StartUp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -64,6 +78,17 @@
       <Project>{a57bb580-f95c-4b01-a628-c9806db1b62b}</Project>
       <Name>Library.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201706040259251_Initial.resx">
+      <DependentUpon>201706040259251_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706040305229_Correct Author lastname.resx">
+      <DependentUpon>201706040305229_Correct Author lastname.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706040410358_Add constraints.resx">
+      <DependentUpon>201706040410358_Add constraints.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

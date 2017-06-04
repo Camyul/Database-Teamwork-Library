@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Library.Models;
 using System.Data.Entity;
-using Library.Models.Migrations;
+using Library.Models.BooksManagement;
+using LibraryApp.Migrations;
 
 namespace LibraryApp
 {
@@ -16,6 +17,7 @@ namespace LibraryApp
             Database.SetInitializer(
                                     new MigrateDatabaseToLatestVersion
                                     <LibraryDbContext, Configuration>());
+            var db = new LibraryDbContext();
         }
     }
 }
