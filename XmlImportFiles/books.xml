@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<library>
+   <book>
+      <title lang="en">Everyday Italian</title>
+      <description>Book 1</description>
+      <author>Giada Laurentiis</author>
+      <genre>Cooking</genre>
+      <year>2005</year>
+      <price>30,00</price>
+   </book>
+   <book>
+      <title lang="en">Harry Potter</title>
+      <description>Book 2</description>
+      <author>J.K. Rowling</author>
+      <genre>Children</genre>
+      <year>2005</year>
+      <price>29,99</price>
+   </book>
+   <book>
+      <title lang="en">XQuery Kick Start</title>
+      <description>Book 3</description>
+      <author>James McGovern</author>
+      <genre>Web</genre>
+      <year>2003</year>
+      <price>49,99</price>
+   </book>
+   <book>
+      <title lang="en">Learning XML</title>
+      <description>Book 4</description>
+      <author>Erik Ray</author>
+      <genre>Web</genre>
+      <year>2003</year>
+      <price>39,95</price>
+   </book>
+</library>

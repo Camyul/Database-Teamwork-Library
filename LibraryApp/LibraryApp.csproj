@@ -69,6 +69,10 @@
     <Compile Include="Migrations\201706041045436_Add Atributes to Models.Designer.cs">
       <DependentUpon>201706041045436_Add Atributes to Models.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706051306567_Add more columns for Book.cs" />
+    <Compile Include="Migrations\201706051306567_Add more columns for Book.Designer.cs">
+      <DependentUpon>201706051306567_Add more columns for Book.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="StartUp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -78,6 +82,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ImportBooksFromXml\ImportBooksFromXml.csproj">
+      <Project>{DE1F2F86-1149-4006-93AB-ED2A13BEF812}</Project>
+      <Name>ImportBooksFromXml</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Library.Models\Library.Models.csproj">
       <Project>{a57bb580-f95c-4b01-a628-c9806db1b62b}</Project>
       <Name>Library.Models</Name>
@@ -95,6 +103,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706041045436_Add Atributes to Models.resx">
       <DependentUpon>201706041045436_Add Atributes to Models.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706051306567_Add more columns for Book.resx">
+      <DependentUpon>201706051306567_Add more columns for Book.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
