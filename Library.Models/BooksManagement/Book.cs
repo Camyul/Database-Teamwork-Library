@@ -1,4 +1,5 @@
 ﻿using Library.Models.BookOrders;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -27,20 +28,25 @@ namespace Library.Models.BooksManagement
 
         [Required]
         [StringLength(100)]
+       
         public string Title { get; set; }
 
+        [JsonProperty("description")]
         [Column(TypeName = "text")]
         public string Description { get; set; }
 
         [Required]
+        [JsonProperty("author")]
         public virtual Author Author { get; set; }
         
         public virtual ICollection<Genre> Genres { get; set; }
 
         [Required]
+        [JsonProperty("year")]
         public int Year { get; set; }
 
         [Required]
+        [JsonProperty("price")]
         public double Price { get; set; }
 
         public virtual BooksOrder Order { get; set; }

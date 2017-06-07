@@ -1,0 +1,22 @@
+{
+  "bookList": [
+    {
+      "title": "book 1",
+	"description": "cool book",
+	"year": 2017,
+	"price": 100,
+    },
+    {
+      "title": "book 2",
+	"description": "cool book",
+	"year": 2017,
+	"price": 100,
+    },
+    {
+      "title": "book 3",
+	"description": "cool book",
+	"year": 2017,
+	"price": 100,
+    }
+  ]
+}

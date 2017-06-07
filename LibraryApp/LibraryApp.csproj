@@ -41,6 +41,9 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -82,6 +85,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ImportBooksFromJson\ImportBooksFromJson.csproj">
+      <Project>{ed386c2f-ba55-40e7-84b7-31a5055fc953}</Project>
+      <Name>ImportBooksFromJson</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ImportBooksFromXml\ImportBooksFromXml.csproj">
       <Project>{DE1F2F86-1149-4006-93AB-ED2A13BEF812}</Project>
       <Name>ImportBooksFromXml</Name>

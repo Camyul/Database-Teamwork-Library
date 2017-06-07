@@ -9,6 +9,10 @@ using ImportBooksFromXML;
 using Library.Models.BooksManagement;
 using LibraryApp.Migrations;
 using ImportBooksFromXML.Contracts;
+using Newtonsoft.Json;
+using System.IO;
+using Newtonsoft.Json.Linq;
+using ImportBooksFromJson;
 
 namespace LibraryApp
 {
@@ -37,8 +41,20 @@ namespace LibraryApp
                 }
             }
 
-                db.SaveChanges();
-            
+            // db.SaveChanges();
+
+            var myJsonDocument = JsonConvert.DeserializeObject<JsonBookList>(File.ReadAllText(@"../../../JsonImportFiles/books.json"));
+            foreach (var book in myJsonDocument.Books)
+            {
+                db.Books.Add(book);
+                /*db.Authors.Add(book.Author);
+                foreach (var genre in book.Genres)
+                {
+                    db.Genres.Add(genre);
+                }*/
+            }
+            db.SaveChanges();
         }
+
     }
 }
