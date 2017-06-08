@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp1
+namespace LibraryApp.Contract
 {
-    class Program
+    public interface ILogger
     {
-        static void Main(string[] args)
-        {
-        }
+        void Log(string message);
     }
 }

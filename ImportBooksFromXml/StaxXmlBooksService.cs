@@ -25,14 +25,12 @@ namespace ImportBooksFromXML
 
         private const string GenreElementName = "genre";
 
-
         public StaxXmlBooksService(string xmlFileLocation)
         {
             this.XmlFileLocation = xmlFileLocation;
         }
 
         public string XmlFileLocation { get; set; }
-
 
         ////Read XML from file 
         public IEnumerable<Book> GetAll()
@@ -59,23 +57,12 @@ namespace ImportBooksFromXML
             const int BookPropertiesToRead = 6;
             int bookPropertiesRead = 0;
             bool isInBook = false;
-            string title = String.Empty;
-            string description = String.Empty;
+            string title = string.Empty;
+            string description = string.Empty;
             Author author = new Author();
             Genre genre = new Genre();
             int year = 0;
             double price = 0;
-
-            //const int dealerPropertiesToRead = 2;
-            //var dealerPropertiesRead = 0;
-            //var isInDealer = false;
-
-            //Transmission transmission = 0;
-            //var model = "";
-            //double price = 0;
-            //Dealer dealer = new Dealer("", "");
-            //var nameDealer = "";
-            //var cityDealer = "";
 
             while (reader.Read() && bookPropertiesRead < BookPropertiesToRead)
             {
@@ -104,7 +91,6 @@ namespace ImportBooksFromXML
                     bookPropertiesRead++;
                     reader.Read();
                     price = double.Parse(reader.Value);
-
                 }
 
                 if (isInBook && reader.IsStartElement() && reader.Name == BookElementYear)
@@ -112,7 +98,6 @@ namespace ImportBooksFromXML
                     bookPropertiesRead++;
                     reader.Read();
                     year = int.Parse(reader.Value);
-
                 }
 
                 if (isInBook && reader.IsStartElement() && reader.Name == AuthorElementName)

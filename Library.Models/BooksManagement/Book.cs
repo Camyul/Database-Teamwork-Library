@@ -1,18 +1,13 @@
 ﻿using Library.Models.BookOrders;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.Models.BooksManagement
 {
     public class Book
     {
-
         public Book(string title, string description, Author author, Genre genre, int year, double price)
         {
             this.Title = title;

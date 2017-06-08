@@ -6,6 +6,5 @@ namespace ImportBooksFromXML.Contracts
     public interface IBookService
     {
         IEnumerable<Book> GetAll();
-        
     }
 }

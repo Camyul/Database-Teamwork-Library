@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Library.Models;
-using System.Data.Entity;
-using ImportBooksFromXML;
-using Library.Models.BooksManagement;
-using LibraryApp.Migrations;
+﻿using ImportBooksFromXML;
 using ImportBooksFromXML.Contracts;
-using Newtonsoft.Json;
-using System.IO;
-using Newtonsoft.Json.Linq;
-using ImportBooksFromJson;
+using Library.ExportToPdf.Contracts;
+using LibraryApp.Contract;
+using LibraryApp.Data;
+using LibraryApp.Migrations;
+using Ninject;
+using System.Data.Entity;
+using System.Linq;
 
 namespace LibraryApp
 {
@@ -23,7 +17,10 @@ namespace LibraryApp
             Database.SetInitializer(
                                     new MigrateDatabaseToLatestVersion
                                     <LibraryDbContext, Configuration>());
-            var db = new LibraryDbContext();
+
+            IKernel kernel = new StandardKernel(new LibraryModule());
+            var db = kernel.Get<IDatabaseLibrary>();
+            LibraryDbContext database = db.GetInstance();
 
             ////Read cars form books.xml
             IBookService bookService = new StaxXmlBooksService("../../../XmlImportFiles/books.xml");
@@ -33,27 +30,34 @@ namespace LibraryApp
 
             foreach (var book in booksToList)
             {
-                db.Books.Add(book);
-                db.Authors.Add(book.Author);
+                database.Books.Add(book);
+                database.Authors.Add(book.Author);
                 foreach (var genre in book.Genres)
                 {
-                    db.Genres.Add(genre);
+                    database.Genres.Add(genre);
                 }
             }
 
-            // db.SaveChanges();
 
-            var myJsonDocument = JsonConvert.DeserializeObject<JsonBookList>(File.ReadAllText(@"../../../JsonImportFiles/books.json"));
-            foreach (var book in myJsonDocument.Books)
-            {
-                db.Books.Add(book);
-                /*db.Authors.Add(book.Author);
-                foreach (var genre in book.Genres)
-                {
-                    db.Genres.Add(genre);
-                }*/
-            }
-            db.SaveChanges();
+            //var myJsonDocument = JsonConvert.DeserializeObject<JsonBookList>(File.ReadAllText(@"../../../JsonImportFiles/books.json"));
+            //foreach (var book in myJsonDocument.Books)
+            //{
+            //    db.Books.Add(book);
+            //    /*db.Authors.Add(book.Author);
+            //    foreach (var genre in book.Genres)
+            //    {
+            //        db.Genres.Add(genre);
+            //    }*/
+            //}
+
+            database.SaveChanges();
+
+            ILogger logger = kernel.Get<ILogger>("Console Logger");
+            logger.Log("Generating pdf reports...");
+
+            //Generating Pdf fle reports
+            var generatePdfReports = kernel.Get<IPdfGenerator>();
+            generatePdfReports.Generate(database);
         }
 
     }

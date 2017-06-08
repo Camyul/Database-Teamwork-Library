@@ -13,7 +13,7 @@ namespace ImportBooksFromJson
         [JsonProperty("bookList")]
         public List<Book> Books { get; set; }
 
-        static void Main(string[] args)
+        public static void Main()
         {
         }
     }
