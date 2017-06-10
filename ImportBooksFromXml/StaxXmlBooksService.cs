@@ -1,15 +1,12 @@
 ﻿using ImportBooksFromXML.Contracts;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 using Library.Models.BooksManagement;
+using Library.Models;
 
 namespace ImportBooksFromXML
 {
-    public class StaxXmlBooksService : IBookService
+    public class StaxXmlBooksService : IDbService
     {
         private const string BookElementName = "book";
 
@@ -25,34 +22,33 @@ namespace ImportBooksFromXML
 
         private const string GenreElementName = "genre";
 
-        public StaxXmlBooksService(string xmlFileLocation)
+        private XmlReader reader;
+        public StaxXmlBooksService(XmlReader reader)
         {
-            this.XmlFileLocation = xmlFileLocation;
+            this.reader = reader;
         }
 
         public string XmlFileLocation { get; set; }
 
         ////Read XML from file 
-        public IEnumerable<Book> GetAll()
+        public IEnumerable<IDbEntity> GetAll()
         {
-            var reader = XmlReader.Create(this.XmlFileLocation);
-
             var books = new List<Book>();
 
             using (reader)
             {
-                Book book = this.ReadNextBook(reader);
+                Book book = this.ReadNextBook();
                 while (book != null)
                 {
                     books.Add(book);
-                    book = this.ReadNextBook(reader);
+                    book = this.ReadNextBook();
                 }
             }
 
             return books;
         }
 
-        private Book ReadNextBook(XmlReader reader)
+        private Book ReadNextBook()
         {
             const int BookPropertiesToRead = 6;
             int bookPropertiesRead = 0;

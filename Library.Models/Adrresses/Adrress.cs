@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Library.Models.Adrresses
 {
-    public class Adrress
+    public class Adrress: IDbEntity
     {
         public int Id { get; set; }
 

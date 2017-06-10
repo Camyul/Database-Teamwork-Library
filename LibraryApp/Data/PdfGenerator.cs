@@ -10,7 +10,7 @@ using System.Linq;
 namespace Library.ExportToPdf
 {
     public class PdfGenerator : IPdfGenerator
-    {
+    { 
         public void Generate(LibraryDbContext dbContext)
         {
             FileStream fs = new FileStream("../../../ExportedFiles/BooksReport.pdf", FileMode.Create,

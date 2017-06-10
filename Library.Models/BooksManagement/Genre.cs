@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Library.Models.BooksManagement
 {
-    public class Genre
+    public class Genre : IDbEntity
     {
         public int Id { get; set; }
 

@@ -57,6 +57,7 @@
     <Compile Include="BooksManagement\Author.cs" />
     <Compile Include="BooksManagement\Book.cs" />
     <Compile Include="BooksManagement\Genre.cs" />
+    <Compile Include="IDbEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Adrresses\Adrress.cs" />
     <Compile Include="Adrresses\Town.cs" />

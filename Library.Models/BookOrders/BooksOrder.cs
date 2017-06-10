@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Library.Models.BookOrders
 {
-    public class BooksOrder
+    public class BooksOrder: IDbEntity
     {
         public int Id { get; set; }
 

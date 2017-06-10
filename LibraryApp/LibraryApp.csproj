@@ -66,6 +66,11 @@
     <Compile Include="Contract\IDatabaseLibrary.cs" />
     <Compile Include="Contract\ILogger.cs" />
     <Compile Include="Contract\IPdfGenerator.cs" />
+    <Compile Include="Core\Commands\ImportRecordsFromJSON.cs" />
+    <Compile Include="Core\Commands\ImportRecordsFromXML.cs" />
+    <Compile Include="Core\Contracts\ICommand.cs" />
+    <Compile Include="Core\Contracts\ICommandParser.cs" />
+    <Compile Include="Core\Providers\CommandParser.cs" />
     <Compile Include="Data\ConsoleLogger.cs" />
     <Compile Include="Data\DatabaseLibrary.cs" />
     <Compile Include="Data\LibraryDbContext.cs" />
@@ -130,6 +135,7 @@
       <DependentUpon>201706051306567_Add more columns for Book.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

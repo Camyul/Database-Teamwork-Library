@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Library.Models.BooksManagement
 {
-    public class Book
+    public class Book : IDbEntity
     {
         public Book(string title, string description, Author author, Genre genre, int year, double price)
         {
@@ -23,7 +23,7 @@ namespace Library.Models.BooksManagement
 
         [Required]
         [StringLength(100)]
-       
+
         public string Title { get; set; }
 
         [JsonProperty("description")]
@@ -33,7 +33,7 @@ namespace Library.Models.BooksManagement
         [Required]
         [JsonProperty("author")]
         public virtual Author Author { get; set; }
-        
+
         public virtual ICollection<Genre> Genres { get; set; }
 
         [Required]

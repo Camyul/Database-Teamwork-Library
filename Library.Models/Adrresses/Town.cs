@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Library.Models.Adrresses
 {
-    public class Town
+    public class Town: IDbEntity
     {
         public int Id { get; set; }
        
