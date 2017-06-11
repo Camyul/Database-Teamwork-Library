@@ -17,6 +17,21 @@ namespace LibraryApp.Data
         public IDbSet<Genre> Genres { get; set; }
 
         public IDbSet<User> Users { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            this.OnGenreModelCreating(modelBuilder);
+
+            base.OnModelCreating(modelBuilder);
+        }
+
+        private void OnGenreModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Genre>()
+                .Property(genre => genre.Name)
+                .IsRequired()
+                .HasMaxLength(60);
+        }
     }
 
 }

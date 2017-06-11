@@ -98,6 +98,10 @@
     <Compile Include="Migrations\201706051306567_Add more columns for Book.Designer.cs">
       <DependentUpon>201706051306567_Add more columns for Book.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706112323104_Add FluentAPI to Genre Model.cs" />
+    <Compile Include="Migrations\201706112323104_Add FluentAPI to Genre Model.Designer.cs">
+      <DependentUpon>201706112323104_Add FluentAPI to Genre Model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="StartUp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -131,6 +135,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706051306567_Add more columns for Book.resx">
       <DependentUpon>201706051306567_Add more columns for Book.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706112323104_Add FluentAPI to Genre Model.resx">
+      <DependentUpon>201706112323104_Add FluentAPI to Genre Model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

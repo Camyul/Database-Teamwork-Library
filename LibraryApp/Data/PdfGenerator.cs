@@ -2,7 +2,6 @@
 using iTextSharp.text.pdf;
 using Library.ExportToPdf.Contracts;
 using Library.ExportToPdf.Models;
-using LibraryApp.Contract;
 using LibraryApp.Data;
 using System.Collections.Generic;
 using System.IO;
