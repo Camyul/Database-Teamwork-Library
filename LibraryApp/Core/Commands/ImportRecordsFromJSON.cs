@@ -1,17 +1,32 @@
-﻿using LibraryApp.Core.Contracts;
-using System;
+﻿using Library.Models.BooksManagement;
+using LibraryApp.Core.Contracts;
+using LibraryApp.Data;
+using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 
 namespace LibraryApp.Core.Commands
 {
-    class ImportRecordsFromJSON : ICommand
+    public class ImportRecordsFromJSON : ICommand
     {
-        public string Execute(string arguments)
+        [JsonProperty("bookList")]
+        public List<Book> Books { get; set; }
+
+        public string Execute(LibraryDbContext database, string path)
         {
-            throw new NotImplementedException();
+            var myJsonDocument = JsonConvert.DeserializeObject<ImportRecordsFromJSON>(File.ReadAllText(@path));
+
+            foreach (var book in myJsonDocument.Books)
+            {
+                database.Books.Add(book);
+                /*db.Authors.Add(book.Author);
+                foreach (var genre in book.Genres)
+                {
+                    db.Genres.Add(genre);
+               }*/
+            }
+            database.SaveChanges();
+            return "Successfully imported from JSON!";
         }
     }
 }

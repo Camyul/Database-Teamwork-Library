@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LibraryApp.Core.Commands
 {
-    class ImportRecordsFromXML : ICommand
+    class ImportRecordsFromXML
     {
         private IDbService xmlService;
 

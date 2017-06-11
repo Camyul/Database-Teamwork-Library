@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LibraryApp.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace LibraryApp.Core.Contracts
 {
     public interface ICommand
     {
-        string Execute(string arguments);
+        string Execute(LibraryDbContext database, string arguments);
     }
 }
