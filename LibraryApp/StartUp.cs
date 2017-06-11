@@ -12,12 +12,15 @@ using Ninject;
 using System;
 using System.Data.Entity;
 using System.Linq;
+using System.Windows.Forms;
 using System.Xml;
 
 namespace LibraryApp
 {
     class StartUp
     {
+        private const string DefaultFileName = "BooksReport.pdf";
+        [STAThread]
         static void Main()
         {
             Database.SetInitializer(
@@ -27,16 +30,21 @@ namespace LibraryApp
             IKernel kernel = new StandardKernel(new LibraryModule());
             var db = kernel.Get<IDatabaseLibrary>();
             LibraryDbContext database = db.GetInstance();
+            ILogger logger = kernel.Get<ILogger>("Console Logger");
+            logger.Log("Generating pdf reports...");
+            
 
-            while(true)
+            // Generating Pdf fle reports
+
+            while (true)
             {
                 var input = Console.ReadLine();
-                if(input == "end")
+                if (input == "end")
                 {
                     Console.WriteLine("Goodbye!");
                     break;
                 }
-                else if(input == "help")
+                else if (input == "help")
                 {
                     Console.WriteLine("List of valid commands:\n importrecordsfromjson <path to file>\n importrecordsfromxml <path to file>");
                 }
@@ -64,13 +72,18 @@ namespace LibraryApp
                             var XMLres = XMLcmd.Execute(database, XMLpath);
                             Console.WriteLine(XMLres);
                             break;
+                        case "GeneratePdfReport":
+                            string path=GetPdfPath();
+                            var generatePdfReportCommand = new GeneratePdfReport();
+                            generatePdfReportCommand.Execute(database, path);
+                            break;
                         default:
                             Console.WriteLine("Default case");
                             break;
                     }
                 }
-               
-          }
+
+            }
 
             ////Read cars form books.xml
             /*var reader = XmlReader.Create("../../../XmlImportFiles/books.xml");
@@ -89,15 +102,26 @@ namespace LibraryApp
                 }
             }*/
 
-            //ILogger logger = kernel.Get<ILogger>("Console Logger");
-            //logger.Log("Generating pdf reports...");
 
-            //Generating Pdf fle reports
-            ///var generatePdfReports = kernel.Get<IPdfGenerator>();
-            //generatePdfReports.Generate(database);
-            
+
 
         }
 
+        private static string GetPdfPath()
+        {
+            SaveFileDialog dialog = new SaveFileDialog();
+            dialog.CheckFileExists = false;
+
+            dialog.FileName = DefaultFileName;
+            dialog.AddExtension = true;
+            dialog.DefaultExt = "pdf";
+            dialog.InitialDirectory = "//";
+            string location = null;
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                location = System.IO.Path.GetFullPath(dialog.FileName);
+            }
+            return location;
+        }
     }
 }

@@ -12,7 +12,7 @@ namespace LibraryApp.Core.Commands
     {
         private IDbService xmlService;
 
-        public string Execute(LibraryDbContext database , string path)
+        public string Execute(LibraryDbContext database, string path)
         {
             var reader = XmlReader.Create(@path);
             var bookService = new StaxXmlBooksService(reader);

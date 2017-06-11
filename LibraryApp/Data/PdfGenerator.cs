@@ -2,6 +2,7 @@
 using iTextSharp.text.pdf;
 using Library.ExportToPdf.Contracts;
 using Library.ExportToPdf.Models;
+using LibraryApp.Contract;
 using LibraryApp.Data;
 using System.Collections.Generic;
 using System.IO;
@@ -11,9 +12,9 @@ namespace Library.ExportToPdf
 {
     public class PdfGenerator : IPdfGenerator
     { 
-        public void Generate(LibraryDbContext dbContext)
+        public void Generate(LibraryDbContext dbContext, string fileLocation)
         {
-            FileStream fs = new FileStream("../../../ExportedFiles/BooksReport.pdf", FileMode.Create,
+            FileStream fs = new FileStream(fileLocation, FileMode.Create,
                                                                                         FileAccess.Write, 
                                                                                             FileShare.None);
 

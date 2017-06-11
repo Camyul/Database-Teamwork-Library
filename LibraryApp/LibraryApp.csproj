@@ -55,6 +55,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -66,6 +67,7 @@
     <Compile Include="Contract\IDatabaseLibrary.cs" />
     <Compile Include="Contract\ILogger.cs" />
     <Compile Include="Contract\IPdfGenerator.cs" />
+    <Compile Include="Core\Commands\GeneratePdfReport.cs" />
     <Compile Include="Core\Commands\ImportRecordsFromJSON.cs" />
     <Compile Include="Core\Commands\ImportRecordsFromXML.cs" />
     <Compile Include="Core\Contracts\ICommand.cs" />
