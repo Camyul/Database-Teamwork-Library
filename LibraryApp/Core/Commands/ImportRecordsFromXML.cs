@@ -1,20 +1,37 @@
-﻿using ImportBooksFromXML.Contracts;
+﻿using ImportBooksFromXML;
+using ImportBooksFromXML.Contracts;
+using Library.Models.BooksManagement;
 using LibraryApp.Core.Contracts;
-using System;
-using System.Collections.Generic;
+using LibraryApp.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Xml;
 
 namespace LibraryApp.Core.Commands
 {
-    class ImportRecordsFromXML
+    public class ImportRecordsFromXML : ICommand
     {
         private IDbService xmlService;
 
-        public string Execute(string arguments)
+        public string Execute(LibraryDbContext database , string path)
         {
-            throw new NotImplementedException();
+            var reader = XmlReader.Create(@path);
+            var bookService = new StaxXmlBooksService(reader);
+
+            var booksToList = bookService.GetAll().ToList();
+
+
+            foreach (var book in booksToList)
+            {
+                database.Books.Add(book as Book);
+                database.Authors.Add((book as Book).Author);
+                foreach (var genre in (book as Book).Genres)
+                {
+                    database.Genres.Add(genre);
+                }
+            }
+            database.SaveChanges();
+
+            return "Successfully imported from XML!";
         }
     }
 }

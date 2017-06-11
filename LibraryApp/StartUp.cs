@@ -31,28 +31,45 @@ namespace LibraryApp
             while(true)
             {
                 var input = Console.ReadLine();
-                var commandParser = new CommandParser();
-                var command = commandParser.Parse(input);
-                if(command == null)
+                if(input == "end")
                 {
+                    Console.WriteLine("Goodbye!");
                     break;
                 }
-
-                switch (command.GetType().Name)
+                else if(input == "help")
                 {
-                    case "ImportRecordsFromJSON":
-                        string path = input.Split(' ')[1].ToLower();
-                        var cmd = new ImportRecordsFromJSON();
-                        var res = cmd.Execute(database, path);
-                        Console.WriteLine(res);
-                        break;
-                    case "ImportRecordsFromXML":
-                        Console.WriteLine("Case 2");
-                        break;
-                    default:
-                        Console.WriteLine("Default case");
-                        break;
+                    Console.WriteLine("List of valid commands:\n importrecordsfromjson <path to file>\n importrecordsfromxml <path to file>");
                 }
+                else
+                {
+                    var commandParser = new CommandParser();
+                    var command = commandParser.Parse(input);
+                    if (command == null)
+                    {
+                        Console.WriteLine("You have inserted a wrong command. Type help for a list of valid commands.");
+                        break;
+                    }
+
+                    switch (command.GetType().Name)
+                    {
+                        case "ImportRecordsFromJSON":
+                            string JSONpath = input.Split(' ')[1].ToLower();
+                            var JSONcmd = new ImportRecordsFromJSON();
+                            var JSONres = JSONcmd.Execute(database, JSONpath);
+                            Console.WriteLine(JSONres);
+                            break;
+                        case "ImportRecordsFromXML":
+                            string XMLpath = input.Split(' ')[1].ToLower();
+                            var XMLcmd = new ImportRecordsFromXML();
+                            var XMLres = XMLcmd.Execute(database, XMLpath);
+                            Console.WriteLine(XMLres);
+                            break;
+                        default:
+                            Console.WriteLine("Default case");
+                            break;
+                    }
+                }
+               
           }
 
             ////Read cars form books.xml
@@ -71,20 +88,6 @@ namespace LibraryApp
                     database.Genres.Add(genre);
                 }
             }*/
-
-
-            //var myJsonDocument = JsonConvert.DeserializeObject<JsonBookList>(File.ReadAllText(@"../../../JsonImportFiles/books.json"));
-            //foreach (var book in myJsonDocument.Books)
-            //{
-            //    db.Books.Add(book);
-            //    /*db.Authors.Add(book.Author);
-            //    foreach (var genre in book.Genres)
-            //    {
-            //        db.Genres.Add(genre);
-            //    }*/
-            //}
-
-            //database.SaveChanges();
 
             //ILogger logger = kernel.Get<ILogger>("Console Logger");
             //logger.Log("Generating pdf reports...");

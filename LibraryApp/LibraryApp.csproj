@@ -105,10 +105,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ImportBooksFromJson\Library.ImportBooksFromJson.csproj">
-      <Project>{ed386c2f-ba55-40e7-84b7-31a5055fc953}</Project>
-      <Name>Library.ImportBooksFromJson</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ImportBooksFromXml\Library.ImportBooksFromXml.csproj">
       <Project>{DE1F2F86-1149-4006-93AB-ED2A13BEF812}</Project>
       <Name>Library.ImportBooksFromXml</Name>
