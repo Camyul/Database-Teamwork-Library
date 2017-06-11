@@ -34,6 +34,8 @@ namespace Library.Models.BooksManagement
         [JsonProperty("author")]
         public virtual Author Author { get; set; }
 
+
+        [JsonProperty("genres")]
         public virtual ICollection<Genre> Genres { get; set; }
 
         [Required]

@@ -31,10 +31,7 @@ namespace LibraryApp
             var db = kernel.Get<IDatabaseLibrary>();
             LibraryDbContext database = db.GetInstance();
             ILogger logger = kernel.Get<ILogger>("Console Logger");
-            logger.Log("Generating pdf reports...");
-            
-
-            // Generating Pdf fle reports
+            logger.Log("Enter \"help\" to see list of valid commands");
 
             while (true)
             {
@@ -46,7 +43,7 @@ namespace LibraryApp
                 }
                 else if (input == "help")
                 {
-                    Console.WriteLine("List of valid commands:\n importrecordsfromjson <path to file>\n importrecordsfromxml <path to file>");
+                    Console.WriteLine("List of valid commands:\n importrecordsfromjson <path to file>\n importrecordsfromxml <path to file> \n generatepdfreport");
                 }
                 else
                 {

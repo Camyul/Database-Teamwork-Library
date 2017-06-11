@@ -1,22 +1,48 @@
 {
-  "bookList": [
-    {
-      "title": "book 1",
-	"description": "cool book",
-	"year": 2017,
-	"price": 100,
-    },
-    {
-      "title": "book 2",
-	"description": "cool book",
-	"year": 2017,
-	"price": 100,
-    },
-    {
-      "title": "book 3",
-	"description": "cool book",
-	"year": 2017,
-	"price": 100,
-    }
-  ]
+    "bookList": [{
+            "title": "book 1",
+            "description": "cool book1",
+            "author": {
+                "firstname": "Joro",
+                "lastname": "Jorov"
+            },
+            "genres": [{
+                "name": "action"
+            }, {
+                "name": "commedy"
+            }],
+            "year": 2017,
+            "price": 105,
+        },
+        {
+            "title": "book 2",
+            "description": "cool book2",
+            "author": {
+                "firstname": "Pesho",
+                "lastname": "Peshov"
+            },
+            "genres": [{
+                "name": "action"
+            }, {
+                "name": "commedy"
+            }],
+            "year": 2013,
+            "price": 69.99,
+        },
+        {
+            "title": "book 3",
+            "description": "cool book3",
+            "author": {
+                "firstname": "Toni",
+                "lastname": "Tonev"
+            },
+            "genres": [{
+                "name": "action"
+            }, {
+                "name": "commedy"
+            }],
+            "year": 2011,
+            "price": 54.54,
+        }
+    ]
 }

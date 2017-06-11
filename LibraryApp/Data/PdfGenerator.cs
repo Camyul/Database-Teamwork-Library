@@ -14,9 +14,7 @@ namespace Library.ExportToPdf
     { 
         public void Generate(LibraryDbContext dbContext, string fileLocation)
         {
-            FileStream fs = new FileStream(fileLocation, FileMode.Create,
-                                                                                        FileAccess.Write, 
-                                                                                            FileShare.None);
+            FileStream fs = new FileStream(fileLocation, FileMode.Create, FileAccess.Write, FileShare.None);
 
             Document document = new Document(this.CreatePdfRectangle());
 
