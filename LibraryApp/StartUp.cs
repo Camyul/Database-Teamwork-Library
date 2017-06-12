@@ -1,9 +1,4 @@
-﻿using ImportBooksFromXML;
-using ImportBooksFromXML.Contracts;
-using Library.ExportToPdf.Contracts;
-using Library.Models;
-using Library.Models.BooksManagement;
-using LibraryApp.Contract;
+﻿using LibraryApp.Contract;
 using LibraryApp.Core.Commands;
 using LibraryApp.Core.Providers;
 using LibraryApp.Data;
@@ -11,9 +6,7 @@ using LibraryApp.Migrations;
 using Ninject;
 using System;
 using System.Data.Entity;
-using System.Linq;
 using System.Windows.Forms;
-using System.Xml;
 
 namespace LibraryApp
 {
