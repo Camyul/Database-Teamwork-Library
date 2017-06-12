@@ -19,11 +19,6 @@ namespace LibraryApp.Core.Commands
             foreach (var book in myJsonDocument.Books)
             {
                 database.Books.Add(book);
-                /*db.Authors.Add(book.Author);
-                foreach (var genre in book.Genres)
-                {
-                    db.Genres.Add(genre);
-               }*/
             }
             database.SaveChanges();
             return "Successfully imported from JSON!";

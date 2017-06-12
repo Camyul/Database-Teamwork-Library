@@ -24,10 +24,7 @@ namespace LibraryApp
             var db = kernel.Get<IDatabaseLibrary>();
             LibraryDbContext database = db.GetInstance();
             ILogger logger = kernel.Get<ILogger>("Console Logger");
-            logger.Log("Generating pdf reports...");
-            
-
-            // Generating Pdf fle reports
+            logger.Log("Enter \"help\" to see list of valid commands");
 
             while (true)
             {
@@ -39,7 +36,7 @@ namespace LibraryApp
                 }
                 else if (input == "help")
                 {
-                    Console.WriteLine("List of valid commands:\n importrecordsfromjson <path to file>\n importrecordsfromxml <path to file>");
+                    Console.WriteLine("List of valid commands:\n importrecordsfromjson <path to file>\n importrecordsfromxml <path to file> \n generatepdfreport");
                 }
                 else
                 {
@@ -77,27 +74,6 @@ namespace LibraryApp
                 }
 
             }
-
-            ////Read cars form books.xml
-            /*var reader = XmlReader.Create("../../../XmlImportFiles/books.xml");
-            var bookService = new StaxXmlBooksService(reader);
-
-            var booksToList = bookService.GetAll().ToList();
-
-
-            foreach (var book in booksToList)
-            {
-                database.Books.Add(book as Book);
-                database.Authors.Add((book as Book).Author);
-                foreach (var genre in (book as Book).Genres )
-                {
-                    database.Genres.Add(genre);
-                }
-            }*/
-
-
-
-
         }
 
         private static string GetPdfPath()

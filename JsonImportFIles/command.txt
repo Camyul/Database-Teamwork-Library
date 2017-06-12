@@ -1,0 +1,3 @@
+importrecordsfromjson ../../../JsonImportFiles/books.json
+generatepdfreport
+importrecordsfromxml ../../../XmlImportFiles/books.xml

@@ -2,7 +2,6 @@
 using iTextSharp.text.pdf;
 using Library.ExportToPdf.Contracts;
 using Library.ExportToPdf.Models;
-using LibraryApp.Contract;
 using LibraryApp.Data;
 using System.Collections.Generic;
 using System.IO;
@@ -14,9 +13,7 @@ namespace Library.ExportToPdf
     { 
         public void Generate(LibraryDbContext dbContext, string fileLocation)
         {
-            FileStream fs = new FileStream(fileLocation, FileMode.Create,
-                                                                                        FileAccess.Write, 
-                                                                                            FileShare.None);
+            FileStream fs = new FileStream(fileLocation, FileMode.Create, FileAccess.Write, FileShare.None);
 
             Document document = new Document(this.CreatePdfRectangle());
 
@@ -50,19 +47,21 @@ namespace Library.ExportToPdf
                     Title = book.Title,
                     Description = book.Description,
                     Author = book.Author.FirstName + " " + book.Author.LastName,
+                    Genres = book.Genres,
                     Year = book.Year,
                     Price = book.Price
                 }).ToList();
 
-            PdfPTable table = new PdfPTable(5);
+            PdfPTable table = new PdfPTable(6);
 
-            int[] widths = new int[] { 20, 40, 20, 15, 20 };
+            int[] widths = new int[] { 20, 25, 20, 25, 15, 20 };
 
             table.SetWidths(widths);
 
             table.AddCell(this.CreateCell(new Phrase("Book name"), true));
             table.AddCell(this.CreateCell(new Phrase("Description"), true));
             table.AddCell(this.CreateCell(new Phrase("Author"), true));
+            table.AddCell(this.CreateCell(new Phrase("Genre"), true));
             table.AddCell(this.CreateCell(new Phrase("Year"), true));
             table.AddCell(this.CreateCell(new Phrase("Price"), true));
 
@@ -78,6 +77,7 @@ namespace Library.ExportToPdf
                 table.AddCell(this.CreateCell(new Phrase(books[i].Title)));
                 table.AddCell(this.CreateCell(new Phrase(books[i].Description)));
                 table.AddCell(this.CreateCell(new Phrase(books[i].Author)));
+                table.AddCell(this.CreateCell(new Phrase(string.Join(", ", books[i].Genres.Select(g => g.Name)))));
                 table.AddCell(this.CreateCell(new Phrase(books[i].Year.ToString())));
                 table.AddCell(this.CreateCell(new Phrase(books[i].Price.ToString("0.00") + '\u20AC')));
             }
